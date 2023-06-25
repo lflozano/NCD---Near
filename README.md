@@ -28,7 +28,7 @@ near dev-deploy build/debug/contrato.wasm
 
 ### Usando variables de entorno
 
-Una vez compilado y desplegado tu proyecto, vamos a requerir identificar la cuenta neardev. Esta la puedes encontrar en el archivo `/neardev/dev-account`. Podemos almacenar este contrato en una variable de entorno ejecutando lo siguiente en la consola, y sustituyendo por tu cuenta de desarrollo:
+Una vez compilado y desplegado tu proyecto, vamos a requerir identificar la cuenta neardev. Esta la puedes encontrar en el archivo `/neardev/neardev`. Podemos almacenar este contrato en una variable de entorno ejecutando lo siguiente en la consola, y sustituyendo por tu cuenta de desarrollo:
 
 ```sh
 export CONTRATO=dev-0000000000000-000000000
@@ -71,7 +71,7 @@ near dev-deploy build/debug/contrato.wasm
 
 ### Usando variables de entorno
 
-Una vez compilado y desplegado tu proyecto, vamos a requerir identificar la cuenta neardev. Esta la puedes encontrar en el archivo `/neardev/dev-account`. Podemos almacenar este contrato en una variable de entorno ejecutando lo siguiente en la consola, y sustituyendo por tu cuenta de desarrollo:
+Una vez compilado y desplegado tu proyecto, vamos a requerir identificar la cuenta neardev. Esta la puedes encontrar en el archivo `/neardev/neardev`. Podemos almacenar este contrato en una variable de entorno ejecutando lo siguiente en la consola, y sustituyendo por tu cuenta de desarrollo:
 
 ```sh
 export CONTRATO=dev-0000000000000-000000000
@@ -86,7 +86,7 @@ echo $CONTRATO
 En este contrato tenemos las siguientes funciones:
 - `setSala(fecha: string)`: esta función nos permite crear la sala de la clase con un profesor asociado a esta. Para poder ejecutarla tenemos que usar el siguiente comando:
 ```
-near call dev-0000000000000-000000000 setSala '{"fecha":"02/06/2022"}' --accountId account.testnet
+near call dev-0000000000000-000000000 setSala '{"fecha":"2022-06-16"}' --accountId account.testnet
 ```
 La respuesta esperada a la ejecución de este comando debería ser:
 ```sh
@@ -101,7 +101,7 @@ La respuesta esperada a la ejecución de este comando debería ser:
 [
   {
     profesor: 'account.testnet',
-    fecha: '02/06/2022',
+    fecha: '2022-06-16',
     alumnos: [],
     covid: false
   }
@@ -109,7 +109,7 @@ La respuesta esperada a la ejecución de este comando debería ser:
 ```
 - `setAlumnoSala`: esta función nos permite agregar un alumno a una sala con una determinada fecha y profesor. Para poder ejecutarla tenemos que usar el siguiente comando:
 ```
-near call dev-0000000000000-000000000 setAlumnoSala '{"profesor":"account.testnet", "fecha":"02/06/2022"}' --accountId account2.testnet
+near call dev-0000000000000-000000000 setAlumnoSala '{"profesor":"account.testnet", "fecha":"2022-06-16"}' --accountId account2.testnet
 ```
 La respuesta esperada a la ejecución de este comando debería ser:
 ```
@@ -124,7 +124,7 @@ La respuesta esperada a la ejecución de este comando `con el nuevo alumno` debe
 [
   {
     profesor: 'account.testnet',
-    fecha: '02/06/2022',
+    fecha: '2022-06-16',
     alumnos: [ { sender: 'account2.testnet' } ],
     covid: false
   }
@@ -132,7 +132,7 @@ La respuesta esperada a la ejecución de este comando `con el nuevo alumno` debe
 ```
 - `setCovid(fecha:string)`: esta función nos permite que una persona diga en qué fechas estuvo presente en salas en caso de que presente covid. Para poder ejecutarla tenemos que usar el siguiente comando:
 ```
-near call dev-0000000000000-000000000 setCovid '{"fecha":"02/06/2022"}' --accountId account.testnet
+near call dev-0000000000000-000000000 setCovid '{"fecha":"2022-06-16"}' --accountId account.testnet
 ```
 La respuesta esperada a la ejecución de este comando `para un profesor` debería ser:
 ```
@@ -151,7 +151,7 @@ La respuesta esperada a la ejecución de este comando `ya sea con un profesor o 
 [
   {
     profesor: 'account.testnet',
-    fecha: '02/06/2022',
+    fecha: '2022-06-16',
     alumnos: [ { sender: 'account2.testnet' } ],
     covid: true
   }
